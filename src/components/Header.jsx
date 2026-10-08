@@ -4,6 +4,9 @@ import Image from 'next/image';
 import logo from '../assets/logo-icon.png'
 import { Button } from '@heroui/react';
 import Navlink from './Navlink';
+import Marquee from './Marquee';
+
+
 
 const Header = () => {
     const date = new Date().toLocaleDateString("bn-Bd" , {
@@ -38,7 +41,10 @@ const Header = () => {
 
           
         </div>
-     <div className='max-w-xl mx-auto'>   <Navlink></Navlink></div>
+     <div >   <Navlink></Navlink>
+     
+     </div>
+
 
       </div>
         
