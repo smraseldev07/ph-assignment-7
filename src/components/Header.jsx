@@ -15,7 +15,7 @@ const Header = () => {
 
     })
 
-    console.log(date);
+   
     
     
     return (
