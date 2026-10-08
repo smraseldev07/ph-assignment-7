@@ -2,7 +2,9 @@ import React from 'react';
 import PriceCard from './PriceCard';
 
 const LowPrice = async() => {
-    const res = await fetch('https://api.api-store.workers.dev/api/bazardor/products')
+    const res = await fetch('https://api.abcz.workers.dev/api/bazardor/products', {
+        cache : 'no-store'
+    })
     const data = await res.json()
     const filterhigh = data.filter((item) => item.change.dir === "down").sort((a, b) => a.change.pct - b.change.pct) .slice(0, 6);
 

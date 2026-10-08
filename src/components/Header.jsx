@@ -4,7 +4,7 @@ import Image from 'next/image';
 import logo from '../assets/logo-icon.png'
 import { Button } from '@heroui/react';
 import Navlink from './Navlink';
-import Marquee from './Marquee';
+
 
 
 
@@ -41,6 +41,7 @@ const Header = () => {
 
           
         </div>
+       
      <div >   <Navlink></Navlink>
      
      </div>

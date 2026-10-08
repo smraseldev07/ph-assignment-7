@@ -2,7 +2,9 @@ import React from 'react';
 import PriceCard from './PriceCard';
 
 const AllProducts = async() => {
-    const res = await fetch('https://api.api-store.workers.dev/api/bazardor/products')
+    const res = await fetch('https://api.abcz.workers.dev/api/bazardor/products', {
+        cache : 'no-store'
+    })
     const data = await res.json()
     console.log(data);
     

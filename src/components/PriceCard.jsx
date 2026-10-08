@@ -1,8 +1,12 @@
+import Link from 'next/link';
 import React from 'react';
 
 const PriceCard = ({product}) => {
+ 
+  
     return (
         <div>
+          <Link href={`/products/${product.id}`}>
              <div className="w-full max-w-112.5 rounded-[20px] border border-[#dce3dd] bg-[#fbfdfb] p-5 shadow-sm">
 
       {/* Top section */}
@@ -57,6 +61,7 @@ const PriceCard = ({product}) => {
         </div>
       </div>
     </div>
+          </Link>
         </div>
     );
 };
