@@ -1,16 +1,35 @@
+import { notFound } from "next/navigation";
 import React from "react";
 
 const ProductDetail = async ({ params }) => {
   const { productid } = await params;
 
   const res = await fetch(
-    `https://api.abcz.workers.dev/api/bazardor/products/${productid}`,
+    `https://api.api-store.workers.dev/api/bazardor/products/${productid}`,
     {
       cache: "no-store",
     }
   );
 
   const product = await res.json();
+ if (
+  !product ||
+  !product.id ||
+  !Array.isArray(product.markets) ||
+  product.markets.length === 0 ||
+  !product.markets.every(
+    (item) =>
+      item.min != null &&
+      item.max != null &&
+      Number.isFinite(Number(item.min)) &&
+      Number.isFinite(Number(item.max))
+  ) ||
+  !product.change ||
+  !["up", "down"].includes(product.change.dir)
+) {
+  notFound();
+}
+
 
   const formatNumber = (number) =>
     new Intl.NumberFormat("bn-BD").format(number);
@@ -171,7 +190,7 @@ const ProductDetail = async ({ params }) => {
 
               <div className="overflow-x-auto">
 
-                <table className="w-full min-w-[650px] border-collapse">
+                <table className="w-full min-w-162.5 border-collapse">
 
                   {/* Header */}
                   <thead>

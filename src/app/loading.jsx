@@ -1,0 +1,11 @@
+
+
+const LoadingPage = () => {
+    return (
+        <div>
+<main className="flex min-h-screen items-center justify-center bg-[#f0f5f0] px-4 py-10"> <div className="w-full max-w-5xl"> {/* Loading Header */} <div className="mb-8 flex flex-col items-center justify-center text-center"> <div className="relative mb-5 flex h-20 w-20 items-center justify-center rounded-3xl border border-[#dce8dc] bg-[#fafcf9] shadow-sm"> <span className="animate-bounce text-4xl">🛒</span> <div className="absolute -right-1 -top-1 h-5 w-5 animate-ping rounded-full bg-[#078b43]/30" /> </div> <h1 className="text-2xl font-bold text-[#202a22]"> BazarDor </h1> <p className="mt-2 text-sm text-[#788078]"> আপনার জন্য সর্বশেষ বাজারদর নিয়ে আসছি... </p> {/* Spinner */} <div className="mt-5 flex items-center gap-2"> <div className="h-5 w-5 animate-spin rounded-full border-2 border-[#d5e3d5] border-t-[#078b43]" /> <span className="text-xs font-medium text-[#078b43]"> লোড হচ্ছে </span> </div> </div> {/* Skeleton Category Header */} <div className="mb-4 flex items-center gap-3 rounded-xl border border-[#e0e8e0] bg-[#fafcf9] p-4"> <div className="h-10 w-10 animate-pulse rounded-xl bg-[#e5ece5]" /> <div className="flex-1 space-y-2"> <div className="h-4 w-32 animate-pulse rounded bg-[#e5ece5]" /> <div className="h-3 w-48 max-w-full animate-pulse rounded bg-[#edf1ed]" /> </div> </div> {/* Skeleton Product Cards */} <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"> {Array.from({ length: 6 }).map((_, i) => ( <div key={i} className="animate-pulse rounded-xl border border-[#e0e8e0] bg-[#fafcf9] p-4" > {/* Product Info */} <div className="flex items-center gap-3"> <div className="h-12 w-12 shrink-0 rounded-xl bg-[#e5ece5]" /> <div className="flex-1 space-y-2"> <div className="h-3 w-3/4 rounded bg-[#e5ece5]" /> <div className="h-2.5 w-1/2 rounded bg-[#edf1ed]" /> </div> </div> {/* Price */} <div className="mt-5 flex items-end justify-between"> <div className="space-y-2"> <div className="h-2.5 w-16 rounded bg-[#edf1ed]" /> <div className="h-4 w-24 rounded bg-[#e5ece5]" /> </div> <div className="h-6 w-14 rounded-full bg-[#e5ece5]" /> </div> </div> ))} </div> {/* Footer */} <p className="mt-8 text-center text-xs text-[#899189]"> একটু অপেক্ষা করুন, আপনার পণ্যগুলো প্রস্তুত হচ্ছে... </p> </div> </main>
+        </div>
+    );
+};
+
+export default LoadingPage;

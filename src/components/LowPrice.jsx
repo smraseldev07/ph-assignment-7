@@ -2,7 +2,7 @@ import React from 'react';
 import PriceCard from './PriceCard';
 
 const LowPrice = async() => {
-    const res = await fetch('https://api.abcz.workers.dev/api/bazardor/products', {
+    const res = await fetch('https://api.api-store.workers.dev/api/bazardor/products', {
         cache : 'no-store'
     })
     const data = await res.json()
@@ -15,7 +15,7 @@ const LowPrice = async() => {
         <div className='max-w-5xl mx-auto mt-11'>
          <h1 className='font-bold'><span className='text-green-600'>▼</span>আজ দাম কমেছে</h1>
 
-         <div className='grid grid-cols-3 gap-3 mt-3'>
+         <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
             {
                 filterhigh.map((product, i) => <PriceCard key={i} product = {product}></PriceCard>)
             }

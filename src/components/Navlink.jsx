@@ -2,13 +2,13 @@ import Link from "next/link";
 
 const Navlink = async ({ currentSlug }) => {
   const res = await fetch(
-    "https://api.abcz.workers.dev/api/bazardor/categories"
+    "https://api.api-store.workers.dev/api/bazardor/categories"
   );
 
   const data = await res.json();
 
   return (
-    <div className="absolute left-96 mt-6 flex gap-3">
+    <div className="relative mt-4 flex flex-wrap gap-3 md:mt-6 lg:absolute lg:left-96 lg:mt-6 lg:flex-nowrap">
       {data.map((item) => {
         const isActive = currentSlug === item.slug;
 

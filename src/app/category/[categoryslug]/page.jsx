@@ -1,4 +1,5 @@
 
+import { notFound } from "next/navigation";
 import React from "react";
 
 const Page = async ({ params, searchParams }) => {
@@ -6,10 +7,17 @@ const Page = async ({ params, searchParams }) => {
   const { sort = "default" } = (await searchParams) || {};
 
   const res = await fetch(
-    `https://api.abcz.workers.dev/api/bazardor/products?category=${categoryslug}`
+    `https://api.api-store.workers.dev/api/bazardor/products?category=${categoryslug}`
   );
 
   const product = await res.json();
+  if (
+  !Array.isArray(product) ||
+  product.length === 0 ||
+  !product.some((item) => item.categoryNameBn)
+) {
+  notFound();
+}
   const products = Array.isArray(product) ? product : [];
 
   const categoryName = products[0]?.categoryNameBn || "পণ্য";
