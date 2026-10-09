@@ -5,6 +5,8 @@ import logo from '../assets/logo-icon.png'
 import { Button } from '@heroui/react';
 import Navlink from './Navlink';
 import Link from 'next/link';
+import {  useSession } from '@/lib/auth-client';
+import Authbuttons from './Authbuttons';
 
 
 
@@ -15,6 +17,11 @@ const Header = () => {
         dateStyle : 'full'
 
     })
+
+
+
+
+
 
    
     
@@ -33,11 +40,7 @@ const Header = () => {
 
             </div>
           </Link>
-            <div >
-                <Button className='bg-white text-black'>সাইন ইন</Button>
-                <Button className='bg-green-600'>সাইন আপ</Button>
-
-            </div>
+           <Authbuttons></Authbuttons>
            
 
 

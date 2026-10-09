@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Marquee from "@/components/Marquee";
 import Footer from "@/components/Footer";
+import { ToastContainer } from "react-toastify";
 
 const notserifbengali = Noto_Serif_Bengali({
   variable: "--font-geist-sans",
@@ -28,6 +29,8 @@ export default function RootLayout({ children }) {
           <div className="mt-20">      
             <Marquee></Marquee></div>
         {children}
+
+        <ToastContainer />
 
         <Footer></Footer>
         </body>

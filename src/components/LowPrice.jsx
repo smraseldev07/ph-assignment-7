@@ -8,7 +8,7 @@ const LowPrice = async() => {
     const data = await res.json()
     const filterhigh = data.filter((item) => item.change.dir === "down").sort((a, b) => a.change.pct - b.change.pct) .slice(0, 6);
 
-    console.log(filterhigh);
+
     
     
     return (
