@@ -1,6 +1,6 @@
 "use client";
 
-import { signIn } from "@/lib/auth-client";
+import { authClient, signIn } from "@/lib/auth-client";
 import {
   Button,
   Description,
@@ -35,7 +35,7 @@ const page = () => {
     callbackURL: "/", // An optional URL to redirect to after the user signs up.
 });
 
-console.log(resdata , error);
+
 
 
     
@@ -51,6 +51,17 @@ theme: "light",
 transition: Bounce,
 });
   };
+   const handleGoogleSignin = async () => {
+      const data = await authClient.signIn.social({
+        provider: "google",
+      });
+    };
+
+     const handleGithubSignin = async() => {
+ const data = await authClient.signIn.social({
+        provider: "github"
+    })
+  }
 
     return (
         <div className="max-w-5xl mx-auto mt-7">
@@ -134,7 +145,8 @@ transition: Bounce,
 
   {/* Social Signup */}
   <div className="grid grid-cols-2 gap-2">
-    <Button
+    <Button 
+    onClick={handleGoogleSignin}
       type="button"
       variant="secondary"
       className="flex h-8 items-center justify-center gap-1 rounded-lg border border-[#e1e9e1] bg-white px-2 text-[10px] font-medium text-[#303b32] hover:bg-[#f2f6f2]"
@@ -145,6 +157,7 @@ transition: Bounce,
     </Button>
 
     <Button
+    onClick={handleGithubSignin}
       type="button"
       variant="secondary"
       className="flex h-8 items-center justify-center gap-1 rounded-lg border border-[#e1e9e1] bg-white px-2 text-[10px] font-medium text-[#303b32] hover:bg-[#f2f6f2]"

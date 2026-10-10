@@ -1,6 +1,6 @@
 "use client";
 
-import { signUp } from "@/lib/auth-client";
+import { authClient, signUp } from "@/lib/auth-client";
 import {
   Button,
   Description,
@@ -17,40 +17,51 @@ import { signUpEmail } from "better-auth/api";
 import { Bounce, toast } from "react-toastify";
 
 const page = () => {
-     const onSubmit = async(e) => {
-      
+  const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const data = {};
-    // Convert FormData to plain object
+
     formData.forEach((value, key) => {
       data[key] = value.toString();
     });
 
     const { data: resdata, error } = await signUp.email({
-    name: data.name, // required, The name of the user.
-    email: data.email, // required, The email address of the user.
-    password: data.password, // required, The password of the user. It should be at least 8 characters long and max 128 by default.
-   
-    callbackURL: "/", // An optional URL to redirect to after the user signs up.
-});
+      name: data.name,
+      email: data.email,
+      password: data.password,
+      callbackURL: "/",
+    });
 
-console.log(resdata , error);
+    if (error) {
+      toast.error(error.message || "সাইন আপ ব্যর্থ হয়েছে");
+      return;
+    }
 
-
-    
- toast.success('ACCOUNT CREATE SUCCESFULLY', {
-position: "top-center",
-autoClose: 5000,
-hideProgressBar: false,
-closeOnClick: false,
-pauseOnHover: true,
-draggable: true,
-progress: undefined,
-theme: "light",
-transition: Bounce,
-});
+    toast.success("ACCOUNT CREATE SUCCESFULLY", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
   };
+
+  const handleGoogleSignin = async () => {
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
+  };
+
+  const handleGithubSignin = async() => {
+ const data = await authClient.signIn.social({
+        provider: "github"
+    })
+  }
 
     return (
         <div className="max-w-5xl mx-auto mt-7">
@@ -156,7 +167,7 @@ transition: Bounce,
 
   {/* Social Signup */}
   <div className="grid grid-cols-2 gap-2">
-    <Button
+    <Button onClick={handleGoogleSignin}
       type="button"
       variant="secondary"
       className="flex h-8 items-center justify-center gap-1 rounded-lg border border-[#e1e9e1] bg-white px-2 text-[10px] font-medium text-[#303b32] hover:bg-[#f2f6f2]"
@@ -167,13 +178,14 @@ transition: Bounce,
     </Button>
 
     <Button
+    onClick={handleGithubSignin}
       type="button"
       variant="secondary"
       className="flex h-8 items-center justify-center gap-1 rounded-lg border border-[#e1e9e1] bg-white px-2 text-[10px] font-medium text-[#303b32] hover:bg-[#f2f6f2]"
       onPress={() => {}}
     >
       <span className="text-sm">◉</span>
-      GitHub দিয়ে চালিয়ে যান
+      GitHub দিয়ে চালিয়ে যান 
     </Button>
   </div>
 
